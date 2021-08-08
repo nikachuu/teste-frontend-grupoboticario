@@ -1,0 +1,54 @@
+<form novalidate [formGroup]="loginForm">
+  <mat-form-field appearance="fill">
+    <mat-label>Digite seu e-mail</mat-label>
+    <input matInput id="loginEmail" type="email" formControlName="loginEmail" />
+    <mat-error
+      *ngIf="
+        loginForm.get('loginEmail')?.errors?.required &&
+        (loginForm.get('loginEmail').dirty ||
+          loginForm.get('loginEmail').touched)
+      "
+      >O campo de e-mail é obrigatório</mat-error
+    >
+    <mat-error
+      *ngIf="
+        loginForm.get('loginEmail')?.errors?.email &&
+        (loginForm.get('loginEmail').dirty ||
+          loginForm.get('loginEmail').touched)
+      "
+      >E-mail inválido</mat-error
+    > </mat-form-field
+  ><mat-form-field appearance="fill">
+    <mat-label>Digite sua senha</mat-label>
+    <input
+      matInput
+      type="password"
+      id="loginPassword"
+      formControlName="loginPassword"
+    />
+    <mat-error
+      *ngIf="
+        loginForm.get('loginPassword')?.errors?.required &&
+        (loginForm.get('loginPassword').dirty ||
+          loginForm.get('loginPassword').touched)
+      "
+      >O campo de senha é obrigatório</mat-error
+    >
+    <mat-error
+      *ngIf="
+        loginForm.get('loginPassword')?.errors?.rangeLength &&
+        (loginForm.get('loginPassword').dirty ||
+          loginForm.get('loginPassword').touched)
+      "
+      >Senha inválida</mat-error
+    >
+  </mat-form-field>
+  <button
+    mat-button
+    color="primary"
+    type="submit"
+    [disabled]="!loginForm.valid"
+  >
+    Entrar
+  </button>
+</form>
