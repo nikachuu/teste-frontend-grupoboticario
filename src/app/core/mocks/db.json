@@ -1,0 +1,63 @@
+{
+  "users": [
+    {
+      "email": "linsantos93@gmail.com",
+      "password": "$2a$10$WrEal89ovB.q6HBB5jvUm.AAUEoWYMGkToYlSSRy48b6.QRx6ddSa",
+      "name": "Aline de Lima Santos",
+      "cpf": "41908191821",
+      "id": 1
+    },
+    {
+      "email": "josefa@email.com",
+      "password": "$2a$10$2daF3rsOr..YR2AgopG5aeN.BaDDXiF.9Y9VRpkHOjsgmvhxF5Xw2",
+      "name": "Josefa Severina",
+      "cpf": "05515589890",
+      "id": 2
+    },
+    {
+      "email": "rosi@email.com",
+      "password": "$2a$10$dA8mOQRCbE8rb462sQkhe.KWzoa7QAhFe1A9IKHVThtq1a68sWNPC",
+      "name": "Rosilene Severina ",
+      "cpf": "09300907808",
+      "id": 3
+    }
+  ],
+  "purchases": [
+    {
+      "purchase_code": "12345",
+      "purchase_value": 2000,
+      "date": "2021-08-27",
+      "userId": 3,
+      "percentage": 10,
+      "cashback_value": 5,
+      "id": 1
+    },
+    {
+      "purchase_code": "74625",
+      "purchase_value": 10,
+      "date": "2021-08-27",
+      "userId": 3,
+      "percentage": 10,
+      "cashback_value": 5,
+      "id": 2
+    },
+    {
+      "purchase_code": "87643",
+      "purchase_value": 38930,
+      "date": "2021-08-28",
+      "userId": 3,
+      "percentage": 10,
+      "cashback_value": 5,
+      "id": 3
+    },
+    {
+      "purchase_code": "48539",
+      "purchase_value": 20,
+      "date": "8732-09-15",
+      "userId": 3,
+      "percentage": 10,
+      "cashback_value": 5,
+      "id": 4
+    }
+  ]
+}
