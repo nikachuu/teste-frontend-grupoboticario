@@ -18,6 +18,7 @@ export class PurchasesListComponent implements OnInit {
     this.userPurchasesService
       .getUserPurchases(this.localStorage.getUserLocalStorage().id)
       .subscribe((response) => {
+        console.log(response);
         if (response) this.dataSource = response;
       });
   }
