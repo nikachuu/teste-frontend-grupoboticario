@@ -17,6 +17,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthenticationService } from '../../core/services/authentication.service';
 import { LoginGuard } from 'src/app/core/guards/login.guard';
 import { ErrorInterceptor } from 'src/app/core/interceptors/error.interceptor';
+import { TextMaskModule } from 'angular2-text-mask';
+import { NgBrazil } from 'ng-brazil';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { ErrorInterceptor } from 'src/app/core/interceptors/error.interceptor';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    TextMaskModule,
+    NgBrazil,
     MatCardModule,
     MatTabsModule,
     MatFormFieldModule,

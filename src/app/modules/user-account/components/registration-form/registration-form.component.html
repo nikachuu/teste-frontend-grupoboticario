@@ -26,7 +26,13 @@
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Digite seu CPF</mat-label>
-    <input type="text" matInput formControlName="cpf" />
+    <input
+      cpf
+      [textMask]="{ mask: MASKS.cpf.textMask }"
+      type="text"
+      matInput
+      formControlName="cpf"
+    />
     <mat-error
       *ngIf="
         registrationForm.get('cpf')?.errors?.required &&

@@ -38,8 +38,10 @@ export class RegistrationFormComponent implements OnInit {
 
   onRegisterFormSubmit() {
     if (this.registrationForm.dirty && this.registrationForm.valid) {
-      // this.registrationForm.value.cpf =
-      //   this.registrationForm.value.cpf.replace(/\D+/g, '');
+      this.registrationForm.value.cpf = this.registrationForm.value.cpf.replace(
+        /\D+/g,
+        ''
+      );
       this.user = Object.assign({}, this.user, this.registrationForm.value);
       this.formResult = this.registrationForm.value;
       console.log(this.user);
