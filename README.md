@@ -1,4 +1,4 @@
-# Teste Front-end | Grupo boticário
+# Teste Front-end | Grupo Boticário
 
 Projeto realizado com a última versão do Angular e Angular Material.   
 Para mock de back-end e afins, foi utilizado o json-server e json-server-auth
