@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
+import { AuthenticationService } from '../../../../core/services/authentication.service';
+import { LocalStorageUtils } from 'src/app/shared/utils/local-storage';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-form',
@@ -10,12 +13,19 @@ import { CustomValidators } from 'ng2-validation';
 export class LoginFormComponent implements OnInit {
   loginForm: FormGroup;
   loginInformation;
-  constructor(private formBuilder: FormBuilder) {}
+
+  localStorage = new LocalStorageUtils();
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private authenticationService: AuthenticationService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      loginEmail: ['', [Validators.required, Validators.email]],
-      loginPassword: [
+      email: ['', [Validators.required, Validators.email]],
+      password: [
         '',
         [Validators.required, CustomValidators.rangeLength([6, 15])],
       ],
@@ -29,7 +39,18 @@ export class LoginFormComponent implements OnInit {
         this.loginInformation,
         this.loginForm.value
       );
-      console.log(this.loginInformation);
+      this.authenticationService
+        .signInUser(this.loginInformation)
+        .subscribe((response) => {
+          this.handleLoginSuccess(response);
+          // erros sendo tratados com Intercept
+        });
     }
+  }
+
+  handleLoginSuccess(success: any) {
+    this.localStorage.saveLoginInfoLocalStorage(success);
+
+    this.router.navigate(['/dashboard']);
   }
 }

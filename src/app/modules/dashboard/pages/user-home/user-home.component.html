@@ -1,0 +1,37 @@
+<section>
+  <mat-card style="margin: 25px">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title
+        >Olá, {{ getUserFirstName(userInfo.name) }}!</mat-card-title
+      >
+      <mat-card-subtitle
+        >Bem-vinde à plataforma de Cashback! :)</mat-card-subtitle
+      >
+    </mat-card-header>
+    <img
+      mat-card-image
+      src="../../../../../assets/images/ecommerce.png"
+      alt="Imagem ilustrativa sobre compras"
+      width="350px"
+      height="300px"
+    />
+
+    <div>
+      <a
+        mat-raised-button
+        color="primary"
+        [routerLink]="['/dashboard/my-purchases']"
+      >
+        Consultar minhas compras
+      </a>
+      <a
+        mat-raised-button
+        color="accent"
+        [routerLink]="['/dashboard/new-purchase']"
+      >
+        Cadastrar novas compras
+      </a>
+    </div>
+  </mat-card>
+</section>

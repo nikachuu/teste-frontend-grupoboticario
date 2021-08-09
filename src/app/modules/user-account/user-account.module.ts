@@ -10,9 +10,21 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { RegistrationFormComponent } from './components/registration-form/registration-form.component';
+import { UserAccountRoutingModule } from './user-account.route';
+import { RouterModule } from '@angular/router';
+import { UserAccountComponent } from './user-account.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthenticationService } from '../../core/services/authentication.service';
+import { LoginGuard } from 'src/app/core/guards/login.guard';
+import { ErrorInterceptor } from 'src/app/core/interceptors/error.interceptor';
 
 @NgModule({
-  declarations: [LoginRegisterComponent, LoginFormComponent, RegistrationFormComponent],
+  declarations: [
+    LoginRegisterComponent,
+    LoginFormComponent,
+    RegistrationFormComponent,
+    UserAccountComponent,
+  ],
   imports: [
     CommonModule,
     FormsModule,
@@ -22,7 +34,14 @@ import { RegistrationFormComponent } from './components/registration-form/regist
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    HttpClientModule,
+    RouterModule,
+    UserAccountRoutingModule,
   ],
-  exports: [LoginRegisterComponent],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    AuthenticationService,
+    LoginGuard,
+  ],
 })
 export class UserAccountModule {}

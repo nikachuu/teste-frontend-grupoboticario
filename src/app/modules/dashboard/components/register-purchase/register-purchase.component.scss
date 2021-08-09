@@ -1,0 +1,17 @@
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  margin: 25px 10px 0 10px;
+  section {
+    width: 100%;
+    color: purple;
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: bold;
+
+    display: flex;
+    flex-direction: column;
+  }
+}

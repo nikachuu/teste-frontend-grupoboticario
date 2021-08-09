@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-// import { IUser } from '../../models/user';
-// import { ILoginInformation } from '../../models/login-information';
+import { Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/core/services/authentication.service';
+import { LocalStorageUtils } from 'src/app/shared/utils/local-storage';
 
 @Component({
   selector: 'app-login-register',
@@ -8,7 +9,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login-register.component.scss'],
 })
 export class LoginRegisterComponent implements OnInit {
-  constructor() {}
+  constructor(
+    private authenticationService: AuthenticationService,
+    private router: Router
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.authenticationService.userIsSignedIn())
+      this.router.navigate(['/dashboard']);
+  }
 }

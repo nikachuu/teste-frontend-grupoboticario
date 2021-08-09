@@ -3,9 +3,37 @@
     mat-icon-button
     class="example-icon"
     aria-label="Example icon-button with menu icon"
+    [matMenuTriggerFor]="menu"
+    yPosition="below"
   >
     <mat-icon>menu</mat-icon>
   </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="handleAuthentication()">
+      {{ localStorage.getUserLocalStorage() ? "Deslogar" : "Logar" }}
+    </button>
+    <button
+      *ngIf="localStorage.getUserLocalStorage()"
+      mat-menu-item
+      [routerLink]="['/dashboard']"
+    >
+      Voltar à home
+    </button>
+    <button
+      *ngIf="localStorage.getUserLocalStorage()"
+      mat-menu-item
+      [routerLink]="['/dashboard/my-purchases']"
+    >
+      Minhas compras
+    </button>
+    <button
+      *ngIf="localStorage.getUserLocalStorage()"
+      mat-menu-item
+      [routerLink]="['/dashboard/new-purchase']"
+    >
+      Registrar nova compra
+    </button>
+  </mat-menu>
   <span>Cashback</span>
   <span class="example-spacer"></span>
   <button
@@ -14,12 +42,5 @@
     aria-label="Example icon-button with heart icon"
   >
     <mat-icon>favorite</mat-icon>
-  </button>
-  <button
-    mat-icon-button
-    class="example-icon"
-    aria-label="Example icon-button with share icon"
-  >
-    <mat-icon>share</mat-icon>
   </button>
 </mat-toolbar>

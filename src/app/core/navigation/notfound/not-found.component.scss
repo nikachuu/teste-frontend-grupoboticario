@@ -1,0 +1,13 @@
+section {
+  height: 95vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h2,
+  p {
+    color: #673ab7;
+    text-shadow: 2px 2px #f1f1f1;
+  }
+}

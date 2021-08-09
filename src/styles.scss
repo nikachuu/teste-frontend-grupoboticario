@@ -1,4 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+mat-dialog-container {
+  background: rgb(248, 241, 255) !important;
+  text-align: center !important;
+  font-size: 20px !important;
+  color: rgba(0, 0, 0, 0.685) !important;
+  span {
+    font-size: 10px !important;
+  }
+}
+
+.mat-column-cod,
+.mat-column-valor,
+.mat-column-data,
+.mat-column-cashback {
+  padding: 15px !important;
+  color: #673ab7;
+}

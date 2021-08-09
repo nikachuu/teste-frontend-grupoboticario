@@ -4,6 +4,7 @@ import { utilsBr } from 'js-brasil';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgBrazilValidators } from 'ng-brazil';
 import { CustomValidators } from 'ng2-validation';
+import { AuthenticationService } from '../../../../core/services/authentication.service';
 
 @Component({
   selector: 'app-registration-form',
@@ -15,19 +16,20 @@ export class RegistrationFormComponent implements OnInit {
   formResult: string = '';
   user;
   loginInformation;
+  success: string = '';
 
   MASKS = utilsBr.MASKS;
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private authenticationService: AuthenticationService
+  ) {}
 
   ngOnInit(): void {
     this.registrationForm = this.formBuilder.group({
-      registrationName: [
-        '',
-        [Validators.required, Validators.pattern('^[a-zA-Z ]*$')],
-      ],
-      registrationCpf: ['', [Validators.required, NgBrazilValidators.cpf]],
-      registrationEmail: ['', [Validators.required, Validators.email]],
-      registrationPassword: [
+      name: ['', [Validators.required, Validators.pattern('^[a-zA-Z ]*$')]],
+      cpf: ['', [Validators.required, NgBrazilValidators.cpf]],
+      email: ['', [Validators.required, Validators.email]],
+      password: [
         '',
         [Validators.required, CustomValidators.rangeLength([6, 20])],
       ],
@@ -36,11 +38,18 @@ export class RegistrationFormComponent implements OnInit {
 
   onRegisterFormSubmit() {
     if (this.registrationForm.dirty && this.registrationForm.valid) {
-      this.registrationForm.value.registrationCpf =
-        this.registrationForm.value.registrationCpf.replace(/\D+/g, '');
+      // this.registrationForm.value.cpf =
+      //   this.registrationForm.value.cpf.replace(/\D+/g, '');
       this.user = Object.assign({}, this.user, this.registrationForm.value);
       this.formResult = this.registrationForm.value;
       console.log(this.user);
+      this.authenticationService.signUpUser(this.user).subscribe(() => {
+        this.handleRegisterSuccess();
+      });
     }
+  }
+
+  handleRegisterSuccess() {
+    this.success = 'Conta criada com sucesso! :)';
   }
 }

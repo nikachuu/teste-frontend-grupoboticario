@@ -4,4 +4,11 @@ form {
   justify-content: center;
 
   margin: 25px 10px 0 10px;
+  span {
+    width: 100%;
+    color: purple;
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: bold;
+  }
 }

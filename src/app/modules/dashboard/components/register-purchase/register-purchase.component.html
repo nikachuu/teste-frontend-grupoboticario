@@ -1,0 +1,87 @@
+<form
+  novalidate
+  [formGroup]="registrationForm"
+  (submit)="onRegisterFormSubmit()"
+>
+  <section *ngIf="success">
+    {{ success }}
+    <a mat-button color="primary" [routerLink]="['/dashboard/my-purchases']">
+      Consultar minhas compras
+    </a>
+  </section>
+  <mat-form-field appearance="fill">
+    <mat-label>Digite o código</mat-label>
+    <input type="text" matInput formControlName="purchase_code" />
+    <mat-error
+      *ngIf="
+        registrationForm.get('purchase_code')?.errors?.required &&
+        (registrationForm.get('purchase_code').dirty ||
+          registrationForm.get('purchase_code').touched)
+      "
+      >O campo de código é obrigatório</mat-error
+    >
+    <mat-error
+      *ngIf="
+        registrationForm.get('purchase_code')?.errors?.rangeLength &&
+        (registrationForm.get('purchase_code').dirty ||
+          registrationForm.get('purchase_code').touched)
+      "
+      >O código tem que ter 5 números</mat-error
+    >
+    <mat-error
+      *ngIf="
+        registrationForm.get('purchase_code')?.errors?.pattern &&
+        (registrationForm.get('purchase_code').dirty ||
+          registrationForm.get('purchase_code').touched)
+      "
+      >Digite apenas números</mat-error
+    >
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Digite o valor</mat-label>
+    <input
+      currencyMask
+      [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"
+      type="text"
+      matInput
+      formControlName="purchase_value"
+    />
+    <mat-error
+      *ngIf="
+        registrationForm.get('purchase_value')?.errors?.required &&
+        (registrationForm.get('purchase_value').dirty ||
+          registrationForm.get('purchase_value').touched)
+      "
+      >O campo de valor é obrigatório</mat-error
+    >
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Digite a data</mat-label>
+    <input type="date" matInput formControlName="date" />
+    <mat-error
+      *ngIf="
+        registrationForm.get('date')?.errors?.required &&
+        (registrationForm.get('date').dirty ||
+          registrationForm.get('date').touched)
+      "
+      >O campo de data é obrigatório</mat-error
+    >
+    <mat-error
+      *ngIf="
+        registrationForm.get('date')?.errors?.email &&
+        (registrationForm.get('date').dirty ||
+          registrationForm.get('date').touched)
+      "
+      >E-mail inválido</mat-error
+    >
+  </mat-form-field>
+  <button
+    mat-button
+    color="primary"
+    type="submit"
+    [disabled]="!registrationForm.valid"
+    style="margin-top: 15px"
+  >
+    Registrar
+  </button>
+</form>

@@ -3,83 +3,84 @@
   [formGroup]="registrationForm"
   (submit)="onRegisterFormSubmit()"
 >
+  <span *ngIf="success">{{ success }}</span>
   <mat-form-field appearance="fill">
     <mat-label>Digite seu nome</mat-label>
-    <input type="text" matInput formControlName="registrationName" />
+    <input type="text" matInput formControlName="name" />
     <mat-error
       *ngIf="
-        registrationForm.get('registrationName')?.errors?.required &&
-        (registrationForm.get('registrationName').dirty ||
-          registrationForm.get('registrationName').touched)
+        registrationForm.get('name')?.errors?.required &&
+        (registrationForm.get('name').dirty ||
+          registrationForm.get('name').touched)
       "
       >O campo de nome é obrigatório</mat-error
     >
     <mat-error
       *ngIf="
-        registrationForm.get('registrationName')?.errors?.pattern &&
-        (registrationForm.get('registrationName').dirty ||
-          registrationForm.get('registrationName').touched)
+        registrationForm.get('name')?.errors?.pattern &&
+        (registrationForm.get('name').dirty ||
+          registrationForm.get('name').touched)
       "
       >Digite apenas caracteres de A à Z.</mat-error
     >
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Digite seu CPF</mat-label>
-    <input type="text" matInput formControlName="registrationCpf" />
+    <input type="text" matInput formControlName="cpf" />
     <mat-error
       *ngIf="
-        registrationForm.get('registrationCpf')?.errors?.required &&
-        (registrationForm.get('registrationCpf').dirty ||
-          registrationForm.get('registrationCpf').touched)
+        registrationForm.get('cpf')?.errors?.required &&
+        (registrationForm.get('cpf').dirty ||
+          registrationForm.get('cpf').touched)
       "
       >O campo de CPF é obrigatório</mat-error
     >
     <mat-error
       *ngIf="
-        registrationForm.get('registrationCpf')?.errors?.cpf &&
-        (registrationForm.get('registrationCpf').dirty ||
-          registrationForm.get('registrationCpf').touched)
+        registrationForm.get('cpf')?.errors?.cpf &&
+        (registrationForm.get('cpf').dirty ||
+          registrationForm.get('cpf').touched)
       "
       >CPF inválido</mat-error
     >
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Digite seu e-mail</mat-label>
-    <input type="text" matInput formControlName="registrationEmail" />
+    <input type="text" matInput formControlName="email" />
     <mat-error
       *ngIf="
-        registrationForm.get('registrationEmail')?.errors?.required &&
-        (registrationForm.get('registrationEmail').dirty ||
-          registrationForm.get('registrationEmail').touched)
+        registrationForm.get('email')?.errors?.required &&
+        (registrationForm.get('email').dirty ||
+          registrationForm.get('email').touched)
       "
       >O campo de e-mail é obrigatório</mat-error
     >
     <mat-error
       *ngIf="
-        registrationForm.get('registrationEmail')?.errors?.email &&
-        (registrationForm.get('registrationEmail').dirty ||
-          registrationForm.get('registrationEmail').touched)
+        registrationForm.get('email')?.errors?.email &&
+        (registrationForm.get('email').dirty ||
+          registrationForm.get('email').touched)
       "
       >E-mail inválido</mat-error
     >
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Digite sua senha</mat-label>
-    <input type="password" matInput formControlName="registrationPassword" />
+    <input type="password" matInput formControlName="password" />
     <mat-hint>Crie uma senha que possua entre 6 e 20 caracteres</mat-hint>
     <mat-error
       *ngIf="
-        registrationForm.get('registrationPassword')?.errors?.required &&
-        (registrationForm.get('registrationPassword').dirty ||
-          registrationForm.get('registrationPassword').touched)
+        registrationForm.get('password')?.errors?.required &&
+        (registrationForm.get('password').dirty ||
+          registrationForm.get('password').touched)
       "
       >O campo de senha é obrigatório</mat-error
     >
     <mat-error
       *ngIf="
-        registrationForm.get('registrationPassword')?.errors?.rangeLength &&
-        (registrationForm.get('registrationPassword').dirty ||
-          registrationForm.get('registrationPassword').touched)
+        registrationForm.get('password')?.errors?.rangeLength &&
+        (registrationForm.get('password').dirty ||
+          registrationForm.get('password').touched)
       "
       >Digite uma senha entre 6-20 caracteres</mat-error
     >
@@ -89,6 +90,7 @@
     color="primary"
     type="submit"
     [disabled]="!registrationForm.valid"
+    style="margin-top: 15px"
   >
     Registrar
   </button>
