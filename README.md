@@ -1,27 +1,19 @@
 # Teste Front-end | Grupo boticário
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.0.
+Projeto realizado com a última versão do Angular e Angular Material.
+Para mock de back-end e afins, foi utilizado o json-server e json-server-auth
 
-## Development server
+## Dependências
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+É extremamente importante que o json-server esteja instalado para que o pseudo-backend funcione.
+Para instalar o json-server, basta rodar  `npm install -g json-server`.
+Após isso, rodar o comando `json-server ./src/app/core/mocks/db.json -m ./node_modules/json-server-auth` estando dentro da pasta raíz de todo o projeto (ou seja, na teste-frontend-grupoboticario).
+Após isso, o servidor local rodará em to `http://localhost:3000/`.
 
-## Code scaffolding
+Já o projeto Front-end roda com o comando padrão de `npm start`, e os testes de integração com `npm test`.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Meus contatos
 
-## Build
+E-mail: linsantos93@gmail.com
+Celular: 11 992747411
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
